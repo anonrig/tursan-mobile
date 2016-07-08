@@ -1,0 +1,35 @@
+<ion-view view-title="{{vm.item[3]}}">
+  <ion-content class="padding">
+    <h4>Bilgiler</h4>
+    <label class="item item-input">
+      <span class="input-label">Servis Numarasi</span>
+      <input type="text" ng-model="vm.item[1]" disabled>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Hareket Saati</span>
+      <input type="text" ng-model="vm.item[2]" disabled>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Surucu</span>
+      <input type="text" ng-model="vm.item[6]" disabled>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Telefon</span>
+      <input type="text" ng-model="vm.item[7]" disabled>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Proje Yoneticisi</span>
+      <input type="text" ng-model="vm.item[10]" disabled>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Telefon</span>
+      <input type="text" ng-model="vm.item[11]" disabled>
+    </label>
+
+    <h4>Guzargah</h4>
+    <div class="row" ng-repeat="data in vm.locations">
+      <div class="col">{{$index == '0' ? 'Baslangic' : ''}} {{$index == vm.locations.length - 1 ? 'Bitis' : ''}}</div>
+      <div class="col">{{data}}</div>
+    </div>
+  </ion-content>
+</ion-view>

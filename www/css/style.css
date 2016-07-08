@@ -1,0 +1,8 @@
+.about-view img {
+  width: 100%;
+}
+
+.suggest-view textarea {
+  width: calc(100% - 139px);
+  height: 80px;
+}

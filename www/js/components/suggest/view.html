@@ -1,0 +1,19 @@
+<ion-view view-title="Sikayet/Oneri">
+  <ion-content class="padding suggest-view">
+    <label class="item item-input">
+      <span class="input-label">E-Posta</span>
+      <input type="email" ng-model="vm.email">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Isminiz</span>
+      <input type="text" ng-model="vm.name">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Mesajiniz</span>
+      <textarea ng-model="vm.message"></textarea>
+    </label>
+    <button class="button button-full button-positive" ng-click="send()">
+      Gonder
+    </button>
+  </ion-content>
+</ion-view>

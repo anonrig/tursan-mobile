@@ -1,0 +1,10 @@
+<ion-view view-title="{{vm.location}}">
+  <ion-content class="padding">
+    <ion-list>
+      <ion-item collection-repeat="item in vm.items" ng-click="go(item)">
+        <h3>{{item[3]}} - [{{item[1]}}]</h3>
+        <p>{{item[2]}} - {{item[5]}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

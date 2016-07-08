@@ -1,0 +1,9 @@
+<ion-view view-title="Nasil Giderim">
+  <ion-content class="padding">
+    <ion-list>
+      <ion-item collection-repeat="item in vm.items" ng-click="go(item)">
+        <h3>{{item[0]}} - [{{item[1]}}]</h3>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
