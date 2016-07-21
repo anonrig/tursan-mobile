@@ -13,6 +13,8 @@
     "ngstorage": "^0.3.10",
     "angular-moment": "^0.10.3",
     "moment": "^2.13.0",
-    "angular-soap": "^2.1.2"
+    "angular-soap": "^2.1.2",
+    "lodash": "^4.13.1",
+    "angular-google-maps": "^2.3.3"
   }
 }

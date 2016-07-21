@@ -18,17 +18,19 @@
     '$state',
     '$ionicHistory',
     '$ionicLoading',
-    '$ionicPopup'
+    '$ionicPopup',
+    '$http'
   ];
 
 
   /**
    * Controller.
    */
-  function SuggestController($scope, ApiFactory, $localStorage, $state, $ionicHistory, $ionicLoading, $ionicPopup) {
+  function SuggestController($scope, ApiFactory, $localStorage, $state, $ionicHistory, $ionicLoading, $ionicPopup, $http) {
     $scope.vm = {};
 
     $scope.send = function() {
+      console.log($scope.vm)
       if (!$scope.vm.email || !$scope.vm.name || !$scope.vm.message)
         return $ionicPopup.alert({
            title: 'Bilgi',
@@ -39,26 +41,16 @@
         template: 'Yukleniyor...'
       });
 
-      ApiFactory
-        .setSuggest({
-          userName: $localStorage.userName,
-          userPassword: $localStorage.password,
-          firmID: $localStorage.userName,
-          EMail: $scope.vm.email + '_#_' + $scope.vm.name,
-          MyMessage: $scope.vm.message
-        })
-        .then(function() {
+      $http
+        .post('http://ws1.tursan.net//DilekSikayetHandler.ashx?user=' + $scope.vm.name + "&message=" + $scope.vm.message + "&info=" + $scope.vm.email)
+        .success(function() {
           $ionicLoading.hide();
           $scope.vm = {};
           $ionicPopup.alert({
              title: 'Bilgi',
              template: 'Mesajiniz basariyla gonderildi.'
            });
-        })
-        .catch(function(err) {
-          console.error('err', err);
-          $ionicLoading.hide();
-        })
+        });
     };
   };
 })();

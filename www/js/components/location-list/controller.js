@@ -42,8 +42,12 @@
         res = res.split('_##_')
 
         res.forEach(function(item) {
-          $scope.vm.items.push(item.split('_#_'));
+          $scope.vm.items.push({
+            name: item.split('_#_')[0],
+            number: item.split('_#_')[1]
+          });
         });
+        $scope.vm.items = _.sortBy($scope.vm.items, ['name', 'number'])
 
         $ionicLoading.hide();
       })
@@ -54,7 +58,7 @@
 
 
     $scope.go = function(item) {
-      $localStorage.tempLocationList = item[0];
+      $localStorage.tempLocationList = item.name;
 
       $state.go('tab.location-list-detail');
     };

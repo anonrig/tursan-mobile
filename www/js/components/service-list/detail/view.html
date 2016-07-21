@@ -1,35 +1,34 @@
 <ion-view view-title="{{vm.item[3]}}">
-  <ion-content class="padding">
+  <ion-content class="padding service-list-detail">
     <h4>Bilgiler</h4>
-    <label class="item item-input">
-      <span class="input-label">Servis Numarası</span>
-      <input type="text" ng-model="vm.item[1]" disabled>
-    </label>
-    <label class="item item-input">
-      <span class="input-label">Hareket Saati</span>
-      <input type="text" ng-model="vm.item[2]" disabled>
-    </label>
-    <label class="item item-input">
-      <span class="input-label">Sürücü</span>
-      <input type="text" ng-model="vm.item[6]" disabled>
-    </label>
-    <label class="item item-input">
-      <span class="input-label">Telefon</span>
-      <input type="text" ng-model="vm.item[7]" disabled>
-    </label>
-    <label class="item item-input">
-      <span class="input-label">Proje Yöneticisi</span>
-      <input type="text" ng-model="vm.item[10]" disabled>
-    </label>
-    <label class="item item-input">
-      <span class="input-label">Telefon</span>
-      <input type="text" ng-model="vm.item[11]" disabled>
-    </label>
+    <div class="table-container">
+      <div class="row">
+        <div class="col">Servis Numarası <div class="sub-el">{{vm.item[1]}}</div></div>
+        <div class="col">Hareket Saati <div class="sub-el">{{vm.item[2]}}</div></div>
+      </div>
+      <div class="row">
+        <div class="col">Sürücü <div class="sub-el">{{vm.item[6]}}</div></div>
+        <div class="col">Telefon <div class="sub-el" style="color: #e77915">{{vm.item[7]}}</div></div>
+      </div>
+      <div class="row">
+        <div class="col">Proje Yöneticisi <div class="sub-el">{{vm.item[10]}}</div></div>
+        <div class="col">Telefon <div class="sub-el" style="color: #e77915">{{vm.item[11]}}</div></div>
+      </div>
+    </div>
 
     <h4>Güzargah</h4>
     <div class="row" ng-repeat="data in vm.locations">
       <div class="col">{{$index == '0' ? 'Başlangıç' : ''}} {{$index == vm.locations.length - 1 ? 'Bitiş' : ''}}</div>
       <div class="col">{{data}}</div>
     </div>
+
+    <h4>Harita</h4>
+    <p>
+      Adres: {{vm.vehicle.address}}
+    </p>
+    <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options'>
+      <ui-gmap-marker ng-if="vm.marker" coords="vm.marker.coords" idkey="vm.marker.id">
+       </ui-gmap-marker>
+    </ui-gmap-google-map>
   </ion-content>
 </ion-view>

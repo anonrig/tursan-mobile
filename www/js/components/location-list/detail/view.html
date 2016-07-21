@@ -1,9 +1,9 @@
 <ion-view view-title="{{vm.location}}">
-  <ion-content class="padding">
+  <ion-content class="padding location-list-detail">
     <ion-list>
       <ion-item collection-repeat="item in vm.items" ng-click="go(item)">
-        <h3>{{item[3]}} - [{{item[1]}}]</h3>
-        <p>{{item[2]}} - {{item[5]}}</p>
+        <div class="serviceId">{{item[1]}}</div>
+        <div class="table-header">{{item[3]}} <span class="plaka">{{item[2]}}</span></div>
       </ion-item>
     </ion-list>
   </ion-content>

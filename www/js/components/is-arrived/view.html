@@ -1,0 +1,10 @@
+<ion-view view-title="Aracım Geldi mi?">
+  <ion-content class="padding is-arrived-view">
+    <ion-list>
+      <ion-item collection-repeat="item in vm.items">
+        <h3>{{item.Plate}} <span style="float: right" ng-style="{'color': item.HasDevice ? 'green' : 'red'}">{{item.HasDevice ? 'Geldi' : 'Gelmedi'}}</span></h3>
+        <p>{{item.ServiceNo}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

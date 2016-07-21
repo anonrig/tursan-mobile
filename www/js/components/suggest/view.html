@@ -1,19 +1,19 @@
-<ion-view view-title="Şikayet/Öneri">
-  <ion-content class="padding suggest-view">
+<ion-view view-title="Şikayet & Öneri" class="suggest-view">
+  <ion-content class="padding">
     <label class="item item-input">
-      <span class="input-label">E-Posta</span>
-      <input type="email" ng-model="vm.email">
+      <i class="icon ion-email"></i>
+      <input type="email" ng-model="vm.email" placeholder="E-Posta">
     </label>
     <label class="item item-input">
-      <span class="input-label">İsminiz</span>
-      <input type="text" ng-model="vm.name">
+      <i class="icon ion-ios-person"></i>
+      <input type="text" ng-model="vm.name" placeholder="İsminiz">
     </label>
-    <label class="item item-input">
-      <span class="input-label">Mesajınız</span>
-      <textarea ng-model="vm.message"></textarea>
+    <label class="item item-input message-item">
+      <i class="icon ion-android-textsms"></i>
+      <textarea ng-model="vm.message" placeholder="Mesajınız"></textarea>
     </label>
-    <button class="button button-full button-positive" ng-click="send()">
-      Gönder
-    </button>
   </ion-content>
+  <ion-footer-bar class="bar-assertive footer-button" ng-click="send()">
+    <h1 class="title">Gönder</h1>
+  </ion-footer-bar>
 </ion-view>

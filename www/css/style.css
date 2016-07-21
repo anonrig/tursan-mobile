@@ -1,8 +1,177 @@
+.angular-google-map-container { height: 400px; }
+
 .about-view img {
   width: 100%;
 }
 
 .suggest-view textarea {
-  width: calc(100% - 139px);
+  width: 100%;
   height: 80px;
+  padding-left: 10px;
+}
+
+.suggest-view .message-item i {
+  height: 80px !important;
+  width: 40px !important;
+  line-height: 80px !important;
+  padding-left: 10px !important;
+}
+
+.button-positive.button.button-full {
+  background-color: #e77915;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.title.title-center.header-item, .title.title-left.header-item {
+  background-color: #e77915;
+  color: white;
+}
+
+ion-header-bar.bar-stable.bar {
+  background-color: #e77915;
+}
+
+.tab-item.tab-item-active, .tab-item.activated {
+  color: #e77915 !important;
+  border-color: #e77915 !important;
+}
+
+.tab-item {
+  border-color: #d9aa55;
+}
+
+.button.back-button.buttons.button-clear.header-item {
+  color: white;
+}
+
+.item.item-input {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 0;
+}
+
+.item.item-input > input {
+  padding-left: 10px;
+}
+
+.item.item-input > i {
+  background-color: #e0e0e0;
+  width: 37px;
+  height: 37px;
+  line-height: 37px;
+  font-size: 20px !important;
+  padding-left: 12px;
+}
+
+.item.item-input > i:before {
+  line-height: 37px;
+}
+
+.login-view img {
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 40px;
+  margin-top: 50px;
+}
+
+.login-view .footer-button {
+  background-color: #e77915;
+  left: 10px;
+  width: calc(100% - 20px);
+  bottom: 10px;
+  border-radius: 5px;
+}
+
+.suggest-view .footer-button {
+  background-color: #e77915;
+  left: 10px;
+  width: calc(100% - 20px);
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.suggest-view .item-input:first-child {
+  margin-top: 30px;
+}
+
+.how-to-go-view .serviceId {
+  float: right;
+  width: 40px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #e77915;
+  color: white;
+}
+
+.location-list-detail .serviceId {
+  color: #e77915;
+  height: 50px;
+  width: 50px;
+  background-color: #f8f7f7;
+  display: inline-block;
+  float: left;
+  line-height: 50px;
+  padding-left: 10px;
+}
+
+.location-list-detail .item {
+  padding: 0;
+  height: 50px;
+  margin-bottom: 5px;
+}
+
+.location-list-detail .table-header {
+  height: 50px;
+  display: inline-block;
+  line-height: 50px;
+  padding-left: 10px;
+  width: calc(100% - 60px);
+  font-weight: 500;
+}
+
+.location-list-detail .plaka {
+  float: right;
+  font-weight: 300;
+}
+
+.service-list-detail .item.item-input{
+  width: 100%;
+}
+
+.service-list-detail h4 {
+  padding-left: 10px;
+}
+
+.table-container {
+  border: 1px solid #e0e0e0;
+}
+
+.table-container .row {
+  height: 80px;
+  padding-top: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table-container .col:first-child {
+  border-right: 1px solid #e0e0e0;
+}
+
+.table-container .col {
+  padding-left: 15px;
+}
+
+.table-container .sub-el {
+  font-size: 12px;
+  color: gray;
+}
+
+#map {
+  height: 300px;
+  width: 100%;
 }

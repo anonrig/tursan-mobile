@@ -1,9 +1,8 @@
 <ion-view view-title="Servis Listesi">
-  <ion-content class="padding">
+  <ion-content class="padding how-to-go-view">
     <ion-list>
       <ion-item collection-repeat="item in vm.items" ng-click="go(item)">
-        <h3>{{item[3]}} - [{{item[1]}}]</h3>
-        <p>{{item[2]}} - {{item[5]}}</p>
+        <h3>{{item[3]}}<span class="serviceId">{{item[1]}}</span></h3>
       </ion-item>
     </ion-list>
   </ion-content>

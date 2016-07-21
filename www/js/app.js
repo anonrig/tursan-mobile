@@ -14,7 +14,8 @@
     'ngResource',
     'ngStorage',
     'angularMoment',
-    'angularSoap'
+    'angularSoap',
+    'uiGmapgoogle-maps'
   ]);
 
   Tursan
@@ -68,6 +69,15 @@
               }
             }
           })
+          .state('tab.is-arrived', {
+            url: '/is-arriveed',
+            views: {
+              'tab-menu': {
+                templateUrl: './js/components/is-arrived/view.html',
+                controller: 'IsArrivedController'
+              }
+            }
+          })
           .state('tab.service-list', {
             url: '/service-list',
             views: {
@@ -89,7 +99,7 @@
           .state('tab.about', {
             url: '/about',
             views: {
-              'tab-menu': {
+              'tab-about': {
                 templateUrl: './js/components/about/view.html',
                 controller: 'AboutController'
               }
@@ -119,7 +129,10 @@
             controller: 'LoginController'
           });
 
-        $urlRouterProvider.otherwise('/login');
+        if (localStorage.getItem('ngStorage-userName'))
+          $urlRouterProvider.otherwise('/menu');
+        else
+          $urlRouterProvider.otherwise('/login');
       }
     ]);
 })();
