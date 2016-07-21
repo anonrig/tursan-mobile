@@ -30,7 +30,6 @@
     $scope.vm = {};
 
     $scope.send = function() {
-      console.log($scope.vm)
       if (!$scope.vm.email || !$scope.vm.name || !$scope.vm.message)
         return $ionicPopup.alert({
            title: 'Bilgi',
