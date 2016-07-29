@@ -1,12 +1,14 @@
-<ion-view view-title="Giriş" class="login-view">
-  <ion-content class="padding">
-    <img src="./img/tursan.png" />
-
-    <button class="button button-full button-dark" ng-click="personelLogin()" style="width: 80%; left: 0; right: 0; display: block; margin: 0 auto; border-radius: 5px; margin-top: 20px;">
+<ion-view view-title="Giriş" class="login-view select-login">
+  <ion-content>
+    <div style="height: 150px; background-image: url('./img/texture.jpg'); background-size: cover;">
+        <img src="./img/tursan-icon.png" style="margin-top: 0; width: 100px; height: 100px; top: 91px; position: relative;"/>
+        <img src="./img/tursan-letter.png" style="position: relative; top: 70px; width: 80%;"/>
+    </div>
+    <button class="button button-full button-dark" ng-click="personelLogin()" style="position: relative; top: 120px; width: 80%; left: 0; right: 0; display: block; margin: 0 auto; border-radius: 5px; margin-top: 20px;">
       Personel Girişi
     </button>
 
-    <button class="button button-full button-dark" ng-click="studentLogin()" style="width: 80%; left: 0; right: 0; display: block; margin: 0 auto; border-radius: 5px; margin-top: 20px;">
+    <button class="button button-full button-dark" ng-click="studentLogin()" style="position: relative; top: 120px; width: 80%; left: 0; right: 0; display: block; margin: 0 auto; border-radius: 5px; margin-top: 20px;">
       Öğrenci Girişi
     </button>
   </ion-content>

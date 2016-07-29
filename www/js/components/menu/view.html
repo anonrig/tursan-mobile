@@ -13,7 +13,6 @@
           <div class="item item-text-wrap">
             <i class="icon ion-home" style="margin-right: 8px; color: #e77915;"></i>{{studentInfo.SchoolPhone}}<br>
             <i class="icon ion-ios-email" style="margin-right: 8px; color: #e77915;"></i>{{studentInfo.SchoolMail}}
-
           </div>
         </div>
 
@@ -88,29 +87,35 @@
         </ui-gmap-google-map>
       </div>
     </div>
-      <ion-item ng-click="go('tab.location-list')" class="item-icon-left" ng-if="!isStudent" style="background-color: white !important;">
+      <ion-item ng-click="go('tab.location-list')" class="item-icon-left item-icon-right" ng-if="!isStudent" style="background-color: white !important;">
         <i class="icon ion-ios-location" style="color: #e77915"></i>
         Nasıl Giderim?
+        <i class="icon ion-chevron-right" style="font-size: 20px;"></i>
       </ion-item>
-      <ion-item ng-click="go('tab.service-list')" class="item-icon-left" ng-if="!isStudent" style="background-color: white !important;">
+      <ion-item ng-click="go('tab.service-list')" class="item-icon-left item-icon-right" ng-if="!isStudent" style="background-color: white !important;">
         <i class="icon ion-android-bus" style="color: #e77915"></i>
         Servis Listesi
+        <i class="icon ion-chevron-right" style="font-size: 20px;"></i>
       </ion-item>
-      <ion-item ng-click="go('tab.is-arrived')" class="item-icon-left" ng-if="!isStudent" style="background-color: white !important;">
+      <ion-item ng-click="go('tab.is-arrived')" class="item-icon-left item-icon-right" ng-if="!isStudent" style="background-color: white !important;">
         <i class="icon ion-android-car" style="color: #e77915"></i>
         Aracım Geldi mi?
+        <i class="icon ion-chevron-right" style="font-size: 20px;"></i>
       </ion-item>
-      <ion-item ng-click="onlinePayment()" class="item-icon-left" ng-if="isStudent" style="background-color: white !important;">
+      <ion-item ng-click="onlinePayment()" class="item-icon-left item-icon-right" ng-if="isStudent" style="background-color: white !important;">
         <i class="icon ion-card" style="color: #e77915"></i>
         Online Ödeme
+        <i class="icon ion-chevron-right" style="font-size: 20px;"></i>
       </ion-item>
-      <ion-item ng-click="go('tab.suggest')" class="item-icon-left" style="background-color: white !important;">
+      <ion-item ng-click="go('tab.suggest')" class="item-icon-left item-icon-right" style="background-color: white !important;">
         <i class="icon ion-ios-information" style="color: #e77915"></i>
         Şikayet - Öneri
+        <i class="icon ion-chevron-right" style="font-size: 20px;"></i>
       </ion-item>
-      <ion-item ng-click="go('tab.poll')" class="item-icon-left" ng-if="!isStudent" style="background-color: white !important;">
+      <ion-item ng-click="go('tab.poll')" class="item-icon-left item-icon-right" ng-if="!isStudent" style="background-color: white !important;">
         <i class="icon ion-ios-help-outline" style="color: #e77915"></i>
         Anket
+        <i class="icon ion-chevron-right" style="font-size: 20px;"></i>
       </ion-item>
       <ion-item ng-click="logout()" class="item-icon-left" style="background-color: white !important;">
         <i class="icon ion-android-exit" style="color: #e77915"></i>
