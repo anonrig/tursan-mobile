@@ -27,6 +27,10 @@
   function LoginController($scope, ApiFactory, $localStorage, $state, $ionicHistory, $ionicLoading) {
     $scope.vm = {};
 
+    $scope.studentLogin = function() {
+      $state.go('student-login');
+    };
+
     $scope.login = function() {
       $ionicLoading.show({
         template: 'Yukleniyor...'
@@ -39,7 +43,7 @@
         })
         .then(function(res) {
           $ionicLoading.hide();
-          
+
           var exists = res.split(' ')[0][0];
 
           if (exists == '0')

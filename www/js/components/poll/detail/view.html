@@ -1,0 +1,24 @@
+<ion-view view-title="Anket">
+  <ion-nav-buttons side="secondary">
+    <button class="button button-icon icon ion-ios-download-outline" style="color: white;" ng-click="save()">
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="padding poll-view">
+    <ion-list>
+      <div style="color: gray; padding: 10px; text-align: center;">
+        Anket sorularına cevabınız evet ise "<i class="icon ion-chevron-up"></i>" cevabınız hayır ise "<i class="icon ion-chevron-down"></i>" ikonlarına tıklayabilirsiniz.
+      </div>
+      <div ng-repeat="item in vm.items">
+        <ion-item class="item-icon-right" style="background-color: white !important;">
+          <div style=" overflow: hidden; white-space: initial; word-wrap: break-word; width: calc(100% - 40px);font-size: 14px; font-weight: 800;"><span style="color: #e77915;">{{$index + 1}}.</span> {{item.QuestionText}}</div>
+          <i style="margin-right: 50px; font-size: 25px;" class="icon ion-chevron-up"  ng-click="selectAnswer($index, 0)" ng-class="{'active-poll': item.Answers[0].selected}"></i>
+          <i style="font-size: 25px;" class="icon ion-chevron-down" ng-click="selectAnswer($index, 1)" ng-class="{'disabled-poll': item.Answers[1].selected}"></i>
+        </ion-item>
+
+        <label class="item item-input" ng-show="item.Answers[1].selected" style="margin: 0; width: 100%;">
+          <input ng-model="item.Answers[1].desc" type="text" placeholder="Lütfen sebebini açıklayabilir misiniz?"/>
+        </label>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

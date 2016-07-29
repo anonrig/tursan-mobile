@@ -37,7 +37,7 @@
          });
 
       $ionicLoading.show({
-        template: 'Yukleniyor...'
+        template: 'Gönderiliyor...'
       });
 
       $http
@@ -46,9 +46,9 @@
           $ionicLoading.hide();
           $scope.vm = {};
           $ionicPopup.alert({
-             title: 'Bilgi',
-             template: 'Mesajiniz basariyla gonderildi.'
-           });
+            title: 'Bilgi',
+            template: 'Mesajınız başarıyla gönderildi.'
+          });
         });
     };
   };

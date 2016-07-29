@@ -19,8 +19,8 @@
   ]);
 
   Tursan
-    .run(['$ionicPlatform', '$rootScope', '$localStorage', 'amMoment',
-      function($ionicPlatform, $rootScope, $localStorage, amMoment) {
+    .run(['$ionicPlatform', '$rootScope', '$localStorage', 'amMoment', '$rootScope',
+      function($ionicPlatform, $rootScope, $localStorage, amMoment, $rootScope) {
         $ionicPlatform.ready(function() {
           if(window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -29,6 +29,12 @@
           if(window.StatusBar) {
             StatusBar.styleLightContent();
           }
+
+          moment.locale('tr');
+
+          $rootScope.callNumber = function(number) {
+            window.plugins.CallNumber.callNumber(null, null, number, false);
+          };
 
           amMoment.changeLocale('tr');
         });
@@ -44,6 +50,7 @@
           })
           .state('tab.menu', {
             url: '/menu',
+            cache: false,
             views: {
               'tab-menu': {
                 templateUrl: './js/components/menu/view.html',
@@ -70,7 +77,7 @@
             }
           })
           .state('tab.is-arrived', {
-            url: '/is-arriveed',
+            url: '/is-arrived',
             views: {
               'tab-menu': {
                 templateUrl: './js/components/is-arrived/view.html',
@@ -123,16 +130,45 @@
               }
             }
           })
+          .state('tab.poll', {
+            url: '/poll',
+            views: {
+              'tab-menu': {
+                templateUrl: './js/components/poll/view.html',
+                controller: 'PollController'
+              }
+            }
+          })
+          .state('tab.poll-detail', {
+            url: '/poll-detail/:id',
+            cache: false,
+            views: {
+              'tab-menu': {
+                templateUrl: './js/components/poll/detail/view.html',
+                controller: 'PollDetailController'
+              }
+            }
+          })
+          .state('select-login', {
+            url: '/select-login',
+            templateUrl: './js/components/select-login/view.html',
+            controller: 'SelectLoginController'
+          })
           .state('login', {
             url: '/login',
             templateUrl: './js/components/login/view.html',
             controller: 'LoginController'
+          })
+          .state('student-login', {
+            url: '/student-login',
+            templateUrl: './js/components/student-login/view.html',
+            controller: 'StudentLoginController'
           });
 
-        if (localStorage.getItem('ngStorage-userName'))
+        if (localStorage.getItem('ngStorage-userName') || localStorage.getItem('ngStorage-tckimlik'))
           $urlRouterProvider.otherwise('/menu');
         else
-          $urlRouterProvider.otherwise('/login');
+          $urlRouterProvider.otherwise('/select-login');
       }
     ]);
 })();

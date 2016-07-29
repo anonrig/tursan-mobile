@@ -1,0 +1,14 @@
+<ion-view view-title="Anketler">
+  <ion-content class="padding poll-view">
+    <ion-list>
+      <ion-item ng-repeat="item in vm.items" ng-click="go(item)" style="background-color: white !important;">
+        <div>
+          <i style="font-size: 25px;  color: #e77915;" class="icon ion-ios-list"></i> <span style="float: right; font-size: 12px; position: relative; top: 5px"><b>Bitiş Tarihi</b>: {{getDate(item.EndDate)}}</span>
+        </div>
+        <hr></hr>
+        <h3>{{item.Title}}</h3>
+        <p>{{item.Description}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -2,18 +2,19 @@
   <ion-content class="padding">
     <label class="item item-input">
       <i class="icon ion-email"></i>
-      <input type="email" ng-model="vm.email" placeholder="E-Posta">
+      <input type="email" ng-model="vm.email" placeholder="E-Posta" style="background-color: white !important;">
     </label>
     <label class="item item-input">
       <i class="icon ion-ios-person"></i>
-      <input type="text" ng-model="vm.name" placeholder="İsminiz">
+      <input type="text" ng-model="vm.name" placeholder="İsminiz" style="background-color: white !important;">
     </label>
     <label class="item item-input message-item">
       <i class="icon ion-android-textsms"></i>
       <textarea ng-model="vm.message" placeholder="Mesajınız"></textarea>
     </label>
+
+    <button class="button button-full button-dark" ng-click="send()" style="width: 80%; left: 0; right: 0; display: block; margin: 0 auto; border-radius: 5px; margin-top: 20px;">
+      Gönder
+    </button>
   </ion-content>
-  <ion-footer-bar class="bar-assertive footer-button" ng-click="send()">
-    <h1 class="title">Gönder</h1>
-  </ion-footer-bar>
 </ion-view>

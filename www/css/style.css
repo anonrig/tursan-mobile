@@ -1,3 +1,7 @@
+.background, .background .pane, .background .item, .background .item-complex .item-content {
+  background-color: #f8f7f7 !important;
+}
+
 .angular-google-map-container { height: 400px; }
 
 .about-view img {
@@ -22,6 +26,10 @@
   color: white;
   border-radius: 5px;
   margin-top: 20px;
+}
+
+.button.button-positive {
+  background-color: #e77915;
 }
 
 .title.title-center.header-item, .title.title-left.header-item {
@@ -174,4 +182,12 @@ ion-header-bar.bar-stable.bar {
 #map {
   height: 300px;
   width: 100%;
+}
+
+.active-poll {
+  color: green;
+}
+
+.disabled-poll {
+  color: red;
 }

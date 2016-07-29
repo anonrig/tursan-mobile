@@ -30,15 +30,29 @@
     $scope.vm.items = [];
 
     $ionicLoading.show({
-      template: 'Yukleniyor...'
+      template: 'Yükleniyor...'
     });
 
     $http.post('http://ws1.tursan.net/HasDeviceControl.aspx/HasDevice', {
       param: $localStorage.userName
     }).success(function(response) {
-      $scope.vm.items = _.sortBy(JSON.parse(response.d), ['HasDevice']);
+      $scope.vm.items = _.sortBy(JSON.parse(response.d), ['HasDevice']).reverse();
 
       $ionicLoading.hide();
     });
+
+    $scope.refresh = function() {
+      $ionicLoading.show({
+        template: 'Yükleniyor...'
+      });
+
+      $http.post('http://ws1.tursan.net/HasDeviceControl.aspx/HasDevice', {
+        param: $localStorage.userName
+      }).success(function(response) {
+        $scope.vm.items = _.sortBy(JSON.parse(response.d), ['HasDevice']).reverse();
+
+        $ionicLoading.hide();
+      });
+    };
   };
 })();

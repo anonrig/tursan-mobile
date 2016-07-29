@@ -2,12 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
     <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+    <script src="lib/moment/min/moment-with-locales.min.js"></script>
     <script src="lib/lodash/dist/lodash.min.js"></script>
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/angular-resource/angular-resource.js"></script>
@@ -27,7 +29,9 @@
     <script src="js/config.js"></script>
     <script src="js/api.js"></script>
 
+    <script src="js/components/select-login/controller.js"></script>
     <script src="js/components/login/controller.js"></script>
+    <script src="js/components/student-login/controller.js"></script>
     <script src="js/components/menu/controller.js"></script>
     <script src="js/components/location-list/controller.js"></script>
     <script src="js/components/location-list/detail/controller.js"></script>
@@ -37,12 +41,14 @@
     <script src="js/components/is-arrived/controller.js"></script>
     <script src="js/components/contact/controller.js"></script>
     <script src="js/components/suggest/controller.js"></script>
+    <script src="js/components/poll/controller.js"></script>
+    <script src="js/components/poll/detail/controller.js"></script>
   </head>
   <body ng-app="Tursan" ng-strict-di>
     <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>
-    <ion-nav-view></ion-nav-view>
+    <ion-nav-view class="background"></ion-nav-view>
   </body>
 </html>

@@ -1,14 +1,34 @@
 <ion-view view-title="İletişim">
-  <ion-content class="padding" style="text-align: center">
-    <h4>Şirket Bilgileri</h4>
-    <p>Yeni Sahra Mah. Yavuz Selim Cad. No:15 / 3 Ataşehir-İstanbul</p>
+  <ion-content style="text-align: center">
+    <ion-item style="text-align: left;">
+      <h3 style="text-align: center; color: gray;">7 gün 24 saat</h3>
+    </ion-item>
+<!-- info@tursan.net -->
+    <div class="table-container" style="margin-bottom: -9px;">
+      <div class="row">
+        <div class="col" ng-click="callNumber('4448450')" style="text-align: center;"><i style="color: #e77915; font-size: 40px;" class="icon ion-ios-telephone"></i></div>
+        <div class="col" ng-click="shareMail('alonet@tursan.net')" style="text-align: center;"><i style="font-size: 40px; color: #e77915;" class="icon ion-email"></i></div>
+      </div>
+    </div>
 
-    <h4 style="margin-top: 40px;">Çalışma Saatleri</h4>
-    <p>Hafta İçi : 08:30 - 18:00</p>
-    <p>Hafta Sonu : -</p>
+    <ion-item style="text-align: left;">
+      <h3 style="text-align: center; color: gray;">Genel Merkez</h3>
+    </ion-item>
 
-    <h4 style="margin-top: 40px;">Telefon ve E-Posta</h4>
-    <p>info@tursan.net</p>
-    <p>+90 216 360 27 23</p>
+    <div class="table-container" style="margin-bottom: -9px;">
+      <div class="row">
+        <div class="col" ng-click="callNumber('02163602723')" style="text-align: center;"><i style="color: #828282; font-size: 40px;" class="icon ion-ios-telephone"></i></div>
+        <div class="col" ng-click="shareMail('info@tursan.net')" style="border-right: 1px solid #e0e0e0; text-align: center;"><i style="color: #828282; font-size: 40px;" class="icon ion-email"></i></div>
+        <div class="col" ng-click="openMaps()" style="text-align: center;"><i style="color: #828282; font-size: 40px;" class="icon ion-location"></i></div>
+      </div>
+    </div>
+
+    <hr></hr>
+    <p style="width: 80%; margin: 0 auto; text-align: center; margin-bottom: 30px; margin-top: 30px;"><i class="icon ion-location"></i> Yeni Sahra Mah. Yavuz Selim Cad. No:15 / 3 Ataşehir-İstanbul</p>
+
+    <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options'>
+      <ui-gmap-marker ng-if="vm.marker" coords="vm.marker.coords" idkey="vm.marker.id">
+       </ui-gmap-marker>
+    </ui-gmap-google-map>
   </ion-content>
 </ion-view>

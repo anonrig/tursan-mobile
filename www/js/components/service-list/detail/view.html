@@ -2,23 +2,23 @@
   <ion-content class="padding service-list-detail">
     <h4>Bilgiler</h4>
     <div class="table-container">
-      <div class="row">
-        <div class="col">Servis Numarası <div class="sub-el">{{vm.item[1]}}</div></div>
-        <div class="col">Hareket Saati <div class="sub-el">{{vm.item[2]}}</div></div>
+      <div class="row" style="background-color: white;">
+        <div class="col"><i style="color: #828282; margin-right: 7px; " class="icon ion-android-bus"></i>Servis Numarası <div class="sub-el" style=" font-size: 16px;">{{vm.item[1]}}</div></div>
+        <div class="col"><i style="color: #828282; margin-right: 7px; " class="icon ion-clock"></i>Hareket Saati <div class="sub-el" style=" font-size: 16px;">{{vm.item[2]}}</div></div>
       </div>
-      <div class="row">
-        <div class="col">Sürücü <div class="sub-el">{{vm.item[6]}}</div></div>
-        <div class="col">Telefon <div class="sub-el" style="color: #e77915">{{vm.item[7]}}</div></div>
+      <div class="row" style="background-color: white;">
+        <div class="col"><i style="color: #828282; margin-right: 7px; " class="icon ion-person"></i>Sürücü <div class="sub-el" style=" font-size: 16px;">{{vm.item[6]}}</div></div>
+        <div class="col" ng-click="callNumber(vm.item[7])"><i style="color: #828282; margin-right: 7px; " class="icon ion-ios-telephone"></i>Telefon <div class="sub-el" style="color: #e77915; font-size: 16px;">{{vm.item[7]}}</div></div>
       </div>
-      <div class="row">
-        <div class="col">Proje Yöneticisi <div class="sub-el">{{vm.item[10]}}</div></div>
-        <div class="col">Telefon <div class="sub-el" style="color: #e77915">{{vm.item[11]}}</div></div>
+      <div class="row" style="background-color: white;">
+        <div class="col"><i style="color: #828282; margin-right: 7px; " class="icon ion-person-stalker"></i>Proje Yöneticisi <div class="sub-el" style=" font-size: 16px;">{{vm.item[10]}}</div></div>
+        <div class="col" ng-click="callNumber(vm.item[11])"><i style="color: #828282; margin-right: 7px; " class="icon ion-ios-telephone"></i>Telefon <div class="sub-el" style="color: #e77915; font-size: 16px;">{{vm.item[11]}}</div></div>
       </div>
     </div>
 
     <h4>Güzargah</h4>
     <div class="row" ng-repeat="data in vm.locations">
-      <div class="col">{{$index == '0' ? 'Başlangıç' : ''}} {{$index == vm.locations.length - 1 ? 'Bitiş' : ''}}</div>
+      <div class="col" ng-class="{'active-poll': $index == 0, 'disabled-poll': $index == vm.locations.length - 1}">{{$index == '0' ? 'Başlangıç' : ''}} {{$index == vm.locations.length - 1 ? 'Bitiş' : ''}}</div>
       <div class="col">{{data}}</div>
     </div>
 

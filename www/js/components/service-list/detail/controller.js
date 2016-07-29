@@ -12,6 +12,7 @@
    * Dependencies.
    */
   ServiceListDetailController.$inject = [
+    '$rootScope',
     '$scope',
     'ApiFactory',
     '$localStorage',
@@ -24,10 +25,11 @@
   /**
    * Controller.
    */
-  function ServiceListDetailController($scope, ApiFactory, $localStorage, $state, $ionicHistory, $http) {
+  function ServiceListDetailController($rootScope, $scope, ApiFactory, $localStorage, $state, $ionicHistory, $http) {
     $scope.vm = {};
     $scope.vm.item = $localStorage.tempServiceList;
     $scope.vm.locations = $scope.vm.item[5].split(',');
+    $scope.callNumber = $rootScope.callNumber;
     $scope.map = { center: {latitude: 41.100395, longitude: 28.998144}, zoom: 8 };
     $scope.options = {
       mapTypeControl: false,

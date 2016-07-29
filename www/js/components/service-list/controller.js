@@ -42,11 +42,17 @@
         ArventoPass2: 'asasasas'
       })
       .then(function(res) {
-        res = res.split('_##_')
+        res = res.split('_##_');
 
         res.forEach(function(item) {
-          $scope.vm.items.push(item.split('_#_'));
+          $scope.vm.items.push({
+            plaka: item.split('_#_')[3],
+            number: item.split('_#_')[1],
+            item: item.split('_#_')
+          });
         });
+
+        $scope.vm.items = _.sortBy($scope.vm.items, ['plaka']);
 
         $ionicLoading.hide();
       })
@@ -56,7 +62,7 @@
       });
 
     $scope.go = function(item) {
-      $localStorage.tempServiceList = item;
+      $localStorage.tempServiceList = item.item;
 
       $state.go('tab.service-list-detail')
     };

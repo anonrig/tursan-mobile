@@ -1,21 +1,120 @@
-<ion-view view-title="Tursan">
+<ion-view view-title="{{isStudent ? studentInfo.Name + ' ' + studentInfo.Surname : 'Tursan'}}">
+  <ion-nav-buttons side="secondary">
+    <button class="button button-icon icon ion-ios-refresh-empty" style="color: white;" ng-click="refresh()" ng-if="isStudent">
+    </button>
+  </ion-nav-buttons>
   <ion-content class="padding">
     <ion-list>
-      <ion-item ng-click="go('tab.location-list')" class="item-icon-left">
+      <div ng-if="isStudent">
+        <div class="card">
+          <div class="item item-divider">
+            <i class="icon ion-university" style="margin-right: 8px; color: #e77915;"></i>{{studentInfo.School}}
+          </div>
+          <div class="item item-text-wrap">
+            <i class="icon ion-home" style="margin-right: 8px; color: #e77915;"></i>{{studentInfo.SchoolPhone}}<br>
+            <i class="icon ion-ios-email" style="margin-right: 8px; color: #e77915;"></i>{{studentInfo.SchoolMail}}
+
+          </div>
+        </div>
+
+        <div class="table-container">
+          <div class="row">
+            <div class="col" style="text-align: center;">Alınış Saati <div style="font-size: 30px; color: #e77915;">{{studentInfo.Hour.substr(0, 5)}}</div></div>
+            <div class="col" style="text-align: center;">Bırakılış Saati <div style="font-size: 30px; color: #e77915;">{{studentInfo.HourEvening.substr(0, 5)}}</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="item item-divider">
+            <i class="icon ion-android-bus" style="margin-right: 8px; color: #e77915;"></i>Servis
+          </div>
+          <div class="item item-text-wrap">
+            <div style="width: 50px; font-weight: 500; height: 50px; line-height: 47px; border: 2px solid #3a3633; border-radius: 5px; float: left; font-size: 22px;text-align: center; display: inline-block;">
+              {{studentInfo.ServiceNo}}
+            </div>
+            <div style="display: inline-block; height: 50px; width: calc(100% - 70px); margin-left: 5px; border-radius: 5px; text-align: center; border: 2px solid black;">
+                <div style="margin-left: -5px; width: 30px; height: 47px; background-color: #0000ff; color: white; font-size: 13px; padding-top: 25px; font-weight: 500; display: inline-block;">TR</div>
+                <div style="width: calc(100% - 40px); display: inline-block; font-size: 35px; top: -10px; position: relative; top: -3px; color: black;">{{studentInfo.Plate}}</div>
+              <div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 0;">
+          <div class="item item-divider">
+            Sürücü
+          </div>
+        </div>
+        <a class="item item-thumbnail-left" href="#">
+          <img ng-if="studentInfo.DriverImage && studentInfo.DriverImage.length > 0" ng-src="{{studentInfo.DriverImage}}" style="border-radius: 50%;">
+          <h2>{{studentInfo.DriverName}}</h2>
+          <p><i class="icon ion-ios-telephone" style="margin-right: 8px; color: #e77915;"></i><span ng-click="callNumber('0' + studentInfo.DriverPhone)">0{{studentInfo.DriverPhone}}</span><br><span ng-if="studentInfo.DriverHomePhone && studentInfo.DriverHomePhone.length > 0"><i class="icon ion-home" style="margin-right: 8px; color: #e77915;"></i><span  ng-click="callNumber('0' + studentInfo.DriverHomePhone)">0{{studentInfo.DriverHomePhone}}</span></span></p>
+        </a>
+
+        <div class="card" style="margin-bottom: 0;">
+          <div class="item item-divider">
+            Rehber
+          </div>
+        </div>
+        <a class="item item-thumbnail-right" href="#" style="margin-bottom: 10px;">
+          <img ng-if="studentInfo.GuideImage && studentInfo.GuideImage.length > 0" ng-src="{{studentInfo.GuideImage}}" style="border-radius: 50%;">
+          <h2>{{studentInfo.GuideName}}</h2>
+          <p><i class="icon ion-ios-telephone" style="margin-right: 8px; color: #e77915;"></i><span ng-click="callNumber('0' + studentInfo.GuidePhone)">0{{studentInfo.GuidePhone}}</span><br><span ng-if="studentInfo.guideHomePhone && studentInfo.guideHomePhone.length > 0"><i class="icon ion-home" style="margin-right: 8px; color: #e77915;"></i><span ng-click="callNumber('0' + studentInfo.GuideHomePhone)">0{{studentInfo.GuideHomePhone}}</span></span></p>
+        </a>
+
+        <div class="card" style="margin-bottom: 0;">
+          <div class="item item-divider">
+            Ulaşım Müdürü
+          </div>
+        </div>
+        <a class="item" href="#" style="margin-bottom: 10px;">
+          <h2 style="display: inline-block;">{{studentInfo.Manager}}</h2>
+          <span style="position: relative; top: -5px;" ng-click="callNumber('0' + studentInfo.ManagerPhone)"><i class="icon ion-ios-telephone" style="margin-left: 8px; margin-right: 8px; color: #e77915;"></i>{{studentInfo.ManagerPhone}}</p>
+        </a>
+
+        <div class="card" style="margin-bottom: 0;" ng-if="studentInfo.ManagerHelper.length > 0">
+          <div class="item item-divider">
+            Ulaşım Müdürü Yardımcısı
+          </div>
+        </div>
+        <a class="item" href="#" style="margin-bottom: 10px;" ng-if="studentInfo.ManagerHelper.length > 0">
+          <h2 style="display: inline-block;">{{studentInfo.ManagerHelper}}</h2>
+          <span ng-click="callNumber('0' + studentInfo.ManagerHelperPhone)"style="position: relative; top: -5px;" ng-if="studentInfo.ManagerHelperPhone && studentInfo.ManagerHelperPhone.length > 0"><i class="icon ion-ios-telephone" style="margin-left: 8px; margin-right: 8px; color: #e77915;"></i>{{studentInfo.ManagerHelperPhone}}</p>
+        </a>
+
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options'>
+          <ui-gmap-marker ng-if="vm.marker" coords="vm.marker.coords" idkey="vm.marker.id">
+           </ui-gmap-marker>
+        </ui-gmap-google-map>
+      </div>
+    </div>
+      <ion-item ng-click="go('tab.location-list')" class="item-icon-left" ng-if="!isStudent" style="background-color: white !important;">
         <i class="icon ion-ios-location" style="color: #e77915"></i>
         Nasıl Giderim?
       </ion-item>
-      <ion-item ng-click="go('tab.service-list')" class="item-icon-left">
+      <ion-item ng-click="go('tab.service-list')" class="item-icon-left" ng-if="!isStudent" style="background-color: white !important;">
         <i class="icon ion-android-bus" style="color: #e77915"></i>
         Servis Listesi
       </ion-item>
-      <ion-item ng-click="go('tab.is-arrived')" class="item-icon-left">
+      <ion-item ng-click="go('tab.is-arrived')" class="item-icon-left" ng-if="!isStudent" style="background-color: white !important;">
         <i class="icon ion-android-car" style="color: #e77915"></i>
         Aracım Geldi mi?
       </ion-item>
-      <ion-item ng-click="go('tab.suggest')" class="item-icon-left">
+      <ion-item ng-click="onlinePayment()" class="item-icon-left" ng-if="isStudent" style="background-color: white !important;">
+        <i class="icon ion-card" style="color: #e77915"></i>
+        Online Ödeme
+      </ion-item>
+      <ion-item ng-click="go('tab.suggest')" class="item-icon-left" style="background-color: white !important;">
         <i class="icon ion-ios-information" style="color: #e77915"></i>
         Şikayet - Öneri
+      </ion-item>
+      <ion-item ng-click="go('tab.poll')" class="item-icon-left" ng-if="!isStudent" style="background-color: white !important;">
+        <i class="icon ion-ios-help-outline" style="color: #e77915"></i>
+        Anket
+      </ion-item>
+      <ion-item ng-click="logout()" class="item-icon-left" style="background-color: white !important;">
+        <i class="icon ion-android-exit" style="color: #e77915"></i>
+        Çıkış
       </ion-item>
     </ion-list>
   </ion-content>

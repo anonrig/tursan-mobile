@@ -1,13 +1,9 @@
-<ion-view view-title="Personel Girişi" class="login-view">
+<ion-view view-title="Öğrenci Girişi" class="login-view">
   <ion-content class="padding">
     <img src="./img/tursan.png" />
     <label class="item item-input">
       <i class="icon ion-email ion-ios-person-outline"></i>
-      <input type="text" ng-model="vm.username" placeholder="Kurum">
-    </label>
-    <label class="item item-input">
-      <i class="icon ion-email ion-ios-locked-outline"></i>
-      <input type="password" ng-model="vm.password" placeholder="Şifre">
+      <input type="text" ng-model="vm.tckimlik" placeholder="TC Kimlik">
     </label>
 
     <button class="button button-full button-dark" ng-click="login()" style="width: 80%; left: 0; right: 0; display: block; margin: 0 auto; border-radius: 5px; margin-top: 20px;">
