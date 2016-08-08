@@ -54,5 +54,11 @@
         $ionicLoading.hide();
       });
     };
+
+    $scope.go = function(item) {
+      $localStorage.tempServiceList = item.Plate;
+
+      $state.go('tab.service-list-detail')
+    };
   };
 })();

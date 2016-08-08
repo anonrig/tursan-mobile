@@ -46,6 +46,9 @@
             disableBack: true
           });
           $state.go('tab.menu');
+        })
+        .error(function() {
+          alert('Girdiğiniz TC numarası sistemimizde bulunmamaktadır.');
         });
     };
   };

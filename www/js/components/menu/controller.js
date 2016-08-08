@@ -30,7 +30,7 @@
     $scope.vm = {};
     $scope.callNumber = $rootScope.callNumber;
     $scope.isStudent = !!$localStorage.tckimlik;
-    console.log($localStorage.studentInfo);
+
     $scope.studentInfo = $localStorage.studentInfo;
     $scope.options = {
       mapTypeControl: false,

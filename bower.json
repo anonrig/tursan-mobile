@@ -15,6 +15,7 @@
     "moment": "^2.14.1",
     "angular-soap": "^2.1.2",
     "lodash": "^4.13.1",
-    "angular-google-maps": "^2.3.3"
+    "angular-google-maps": "^2.3.3",
+    "ionic-filter-bar": "^1.1.1"
   }
 }

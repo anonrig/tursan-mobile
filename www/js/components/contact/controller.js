@@ -26,6 +26,7 @@
    */
   function ContactController($rootScope, $scope, ApiFactory, $localStorage, $state, $ionicHistory) {
     $scope.vm = {};
+    $scope.isStudent = !!$localStorage.tckimlik;
 
     $scope.callNumber = $rootScope.callNumber;
     $scope.options = {
@@ -34,11 +35,7 @@
     };
 
     $scope.openMaps = function() {
-      if (ionic.Platform.isIOS())
-        window.open('maps://?q=40.986294,29.091977');
-      else {
-        window.open('geo:40.986294,29.091977')
-      }
+      directions.navigateTo("40.986294", "29.091977")
     };
 
     $scope.shareMail = function(mail) {

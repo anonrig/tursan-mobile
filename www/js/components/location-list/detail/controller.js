@@ -17,14 +17,15 @@
     '$localStorage',
     '$state',
     '$ionicHistory',
-    '$ionicLoading'
+    '$ionicLoading',
+    '$http'
   ];
 
 
   /**
    * Controller.
    */
-  function LocationListDetailController($scope, ApiFactory, $localStorage, $state, $ionicHistory, $ionicLoading) {
+  function LocationListDetailController($scope, ApiFactory, $localStorage, $state, $ionicHistory, $ionicLoading, $http) {
     $scope.vm = {};
     $scope.vm.items = [];
     $scope.vm.location = $localStorage.tempLocationList;
@@ -33,32 +34,18 @@
       template: 'Yukleniyor...'
     });
 
-    ApiFactory
-      .getRouteDetails({
-        userName: $localStorage.userName,
-        userPassword: $localStorage.password,
-        firmID: $localStorage.userName,
-        destination: $localStorage.tempLocationList,
-        ArventoCode: 'tursanpersonelweb',
-        ArventoPass1: 'asasasas',
-        ArventoPass2: 'asasasas'
-      })
-      .then(function(res) {
-        res = res.split('_##_')
+    $http
+      .get('http://ws1.tursan.net/GetPlatesHandler.ashx?station=' + $localStorage.tempLocationList + "&firmID="+$localStorage.userName)
+      .success(function(response) {
+        console.log('response', response);
 
-        res.forEach(function(item) {
-          $scope.vm.items.push(item.split('_#_'));
-        });
+        $scope.vm.items = response;
 
-        $ionicLoading.hide();
-      })
-      .catch(function(err) {
-        console.error('Err', err);
         $ionicLoading.hide();
       });
 
     $scope.go = function(item) {
-      $localStorage.tempServiceList = item;
+      $localStorage.tempServiceList = item.Plate;
 
       $state.go('tab.service-list-detail')
     };

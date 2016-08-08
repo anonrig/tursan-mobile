@@ -18,18 +18,18 @@
     '$localStorage',
     '$state',
     '$ionicHistory',
-    '$http'
+    '$http',
+    '$ionicLoading'
   ];
 
 
   /**
    * Controller.
    */
-  function ServiceListDetailController($rootScope, $scope, ApiFactory, $localStorage, $state, $ionicHistory, $http) {
+  function ServiceListDetailController($rootScope, $scope, ApiFactory, $localStorage, $state, $ionicHistory, $http, $ionicLoading) {
     $scope.vm = {};
-    $scope.vm.item = $localStorage.tempServiceList;
-    $scope.vm.locations = $scope.vm.item[5].split(',');
     $scope.callNumber = $rootScope.callNumber;
+    $scope.plate = $localStorage.tempServiceList;
     $scope.map = { center: {latitude: 41.100395, longitude: 28.998144}, zoom: 8 };
     $scope.options = {
       mapTypeControl: false,
@@ -40,34 +40,41 @@
       address: 'Yükleniyor...'
     };
 
-    $scope.vm.locations = $scope.vm.locations.filter(function(item, pos) {
-      return $scope.vm.locations.indexOf(item) == pos;
+    $ionicLoading.show({
+      template: 'Yukleniyor...'
     });
 
-    $http.post('http://ws1.tursan.net/GetCurrentLoc.aspx/GetCurrentLocByParam', {
-      param: $scope.vm.item[3]
-    }).success(function(response) {
-      var resp = JSON.parse(response.d);
+    $http
+      .get('http://ws1.tursan.net/GetServiceDetailsHandler.ashx?plate=' + $localStorage.tempServiceList + "&firmID=" + $localStorage.userName)
+      .success(function(response) {
+        $scope.vm.item = response;
 
-      $scope.vm.vehicle.latitude = resp.Latitude;
-      $scope.vm.vehicle.longtitude = resp.Longtitude;
-      $scope.vm.vehicle.address = resp.Address;
+        $ionicLoading.hide();
+        $http.post('http://ws1.tursan.net/GetCurrentLoc.aspx/GetCurrentLocByParam', {
+          param: $scope.vm.item.Plate
+        }).success(function(response) {
+          var resp = JSON.parse(response.d);
 
-      $scope.vm.marker = {
-        id: Math.floor(Math.random() * (1000 - 0 + 1)) + 0,
-        coords: {
-          latitude: resp.Latitude.replace(",", "."),
-          longitude: resp.Longtitude.replace(",", ".")
-        }
-      };
+          $scope.vm.vehicle.latitude = resp.Latitude;
+          $scope.vm.vehicle.longtitude = resp.Longtitude;
+          $scope.vm.vehicle.address = resp.Address;
 
-      $scope.map = {
-        center: {
-          latitude: parseFloat(resp.Latitude.replace(",", ".")),
-          longitude: parseFloat(resp.Longtitude.replace(",", "."))
-        },
-        zoom: 16
-      };
-    });
+          $scope.vm.marker = {
+            id: Math.floor(Math.random() * (1000 - 0 + 1)) + 0,
+            coords: {
+              latitude: resp.Latitude.replace(",", "."),
+              longitude: resp.Longtitude.replace(",", ".")
+            }
+          };
+
+          $scope.map = {
+            center: {
+              latitude: parseFloat(resp.Latitude.replace(",", ".")),
+              longitude: parseFloat(resp.Longtitude.replace(",", "."))
+            },
+            zoom: 16
+          };
+        });
+      });
   };
 })();

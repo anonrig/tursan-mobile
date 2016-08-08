@@ -33,7 +33,12 @@
             </div>
             <div style="display: inline-block; height: 50px; width: calc(100% - 70px); margin-left: 5px; border-radius: 5px; text-align: center; border: 2px solid black;">
                 <div style="margin-left: -5px; width: 30px; height: 47px; background-color: #0000ff; color: white; font-size: 13px; padding-top: 25px; font-weight: 500; display: inline-block;">TR</div>
-                <div style="width: calc(100% - 40px); display: inline-block; font-size: 35px; top: -10px; position: relative; top: -3px; color: black;">{{studentInfo.Plate}}</div>
+                <div style="    width: calc(100% - 40px);
+                  display: inline-block;
+                  font-size: 29px;
+                  position: relative;
+                  top: -3px;
+                  color: black;">{{studentInfo.Plate}}</div>
               <div>
             </div>
           </div>
@@ -47,7 +52,7 @@
         <a class="item item-thumbnail-left" href="#">
           <img ng-if="studentInfo.DriverImage && studentInfo.DriverImage.length > 0" ng-src="{{studentInfo.DriverImage}}" style="border-radius: 50%;">
           <h2>{{studentInfo.DriverName}}</h2>
-          <p><i class="icon ion-ios-telephone" style="margin-right: 8px; color: #e77915;"></i><span ng-click="callNumber('0' + studentInfo.DriverPhone)">0{{studentInfo.DriverPhone}}</span><br><span ng-if="studentInfo.DriverHomePhone && studentInfo.DriverHomePhone.length > 0"><i class="icon ion-home" style="margin-right: 8px; color: #e77915;"></i><span  ng-click="callNumber('0' + studentInfo.DriverHomePhone)">0{{studentInfo.DriverHomePhone}}</span></span></p>
+          <p><i class="icon ion-ios-telephone" style="margin-right: 8px; color: #e77915;"></i><span ng-click="callNumber('0' + studentInfo.DriverPhone)">0{{studentInfo.DriverPhone}}</span></p>
         </a>
 
         <div class="card" style="margin-bottom: 0;">
@@ -58,7 +63,7 @@
         <a class="item item-thumbnail-right" href="#" style="margin-bottom: 10px;">
           <img ng-if="studentInfo.GuideImage && studentInfo.GuideImage.length > 0" ng-src="{{studentInfo.GuideImage}}" style="border-radius: 50%;">
           <h2>{{studentInfo.GuideName}}</h2>
-          <p><i class="icon ion-ios-telephone" style="margin-right: 8px; color: #e77915;"></i><span ng-click="callNumber('0' + studentInfo.GuidePhone)">0{{studentInfo.GuidePhone}}</span><br><span ng-if="studentInfo.guideHomePhone && studentInfo.guideHomePhone.length > 0"><i class="icon ion-home" style="margin-right: 8px; color: #e77915;"></i><span ng-click="callNumber('0' + studentInfo.GuideHomePhone)">0{{studentInfo.GuideHomePhone}}</span></span></p>
+          <p><i class="icon ion-ios-telephone" style="margin-right: 8px; color: #e77915;"></i><span ng-click="callNumber('0' + studentInfo.GuidePhone)">0{{studentInfo.GuidePhone}}</span></p>
         </a>
 
         <div class="card" style="margin-bottom: 0;">

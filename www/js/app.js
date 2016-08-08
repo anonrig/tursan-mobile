@@ -15,7 +15,8 @@
     'ngStorage',
     'angularMoment',
     'angularSoap',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'jett.ionic.filter.bar'
   ]);
 
   Tursan

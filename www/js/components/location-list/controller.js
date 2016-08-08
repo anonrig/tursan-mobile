@@ -13,52 +13,62 @@
    */
   LocationListController.$inject = [
     '$scope',
+    '$ionicFilterBar',
     'ApiFactory',
     '$localStorage',
     '$state',
     '$ionicHistory',
-    '$ionicLoading'
+    '$ionicLoading',
+    '$http'
   ];
 
 
   /**
    * Controller.
    */
-  function LocationListController($scope, ApiFactory, $localStorage, $state, $ionicHistory, $ionicLoading) {
+  function LocationListController($scope, $ionicFilterBar, ApiFactory, $localStorage, $state, $ionicHistory, $ionicLoading, $http) {
     $scope.vm = {};
     $scope.vm.items = [];
+
+    var filterBarInstance;
 
     $ionicLoading.show({
       template: 'Yukleniyor...'
     });
 
-    ApiFactory
-      .getLocationList({
-        userName: $localStorage.userName,
-        userPassword: $localStorage.password,
-        firmID: $localStorage.userName
-      })
-      .then(function(res) {
-        res = res.split('_##_')
 
-        res.forEach(function(item) {
-          $scope.vm.items.push({
-            name: item.split('_#_')[0],
-            number: item.split('_#_')[1]
-          });
-        });
-        $scope.vm.items = _.sortBy($scope.vm.items, ['name', 'number'])
+    $http
+      .get('http://ws1.tursan.net/GetEndListHandler.ashx?firmID=' + $localStorage.userName)
+      .success(function(response) {
+        console.log('response', response);
 
-        $ionicLoading.hide();
-      })
-      .catch(function(err) {
-        console.error('err', err);
+        $scope.vm.items = _.sortBy(response, ['Route', 'ServiceCount']);
+
         $ionicLoading.hide();
       });
 
 
+    $scope.showFilterBar = function () {
+      filterBarInstance = $ionicFilterBar.show({
+        items: $scope.vm.items,
+        update: function (filteredItems, filterText) {
+          $scope.vm.items = filteredItems;
+          if (filterText) {
+            console.log(filterText);
+          }
+        }
+      });
+    };
+
+    $scope.refreshItems = function () {
+      if (filterBarInstance) {
+        filterBarInstance();
+        filterBarInstance = null;
+      }
+    };
+
     $scope.go = function(item) {
-      $localStorage.tempLocationList = item.name;
+      $localStorage.tempLocationList = item.Route;
 
       $state.go('tab.location-list-detail');
     };

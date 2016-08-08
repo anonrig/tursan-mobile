@@ -7,6 +7,9 @@
     <author email="yagiznizipli@gmail.com" href="https://anonrig.me">
     Yagiz Nizipli
   </author>
+    <platform name="ios">
+        <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+    </platform>
     <content src="index.html" />
     <access origin="*" />
     <preference name="webviewbounce" value="false" />
@@ -55,4 +58,5 @@
     <plugin name="cordova-plugin-inappbrowser" spec="~1.4.0" />
     <plugin name="mx.ferreyra.callnumber" spec="https://github.com/Rohfosho/CordovaCallNumberPlugin.git" />
     <plugin name="cordova-plugin-email" spec="~1.1.1" />
+    <plugin name="cordova-plugin-directions" spec="~0.4.4" />
 </widget>
