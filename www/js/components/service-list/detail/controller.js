@@ -48,7 +48,7 @@
       .get('http://ws1.tursan.net/GetServiceDetailsHandler.ashx?plate=' + $localStorage.tempServiceList + "&firmID=" + $localStorage.userName)
       .success(function(response) {
         $scope.vm.item = response;
-
+        console.log(response)
         $ionicLoading.hide();
         $http.post('http://ws1.tursan.net/GetCurrentLoc.aspx/GetCurrentLocByParam', {
           param: $scope.vm.item.Plate

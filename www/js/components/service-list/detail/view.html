@@ -18,11 +18,15 @@
       </div>
     </div>
 
-    <!-- <h4>Güzargah</h4>
-    <div class="row" ng-repeat="data in vm.locations">
-      <div class="col" ng-class="{'active-poll': $index == 0, 'disabled-poll': $index == vm.locations.length - 1}">{{$index == '0' ? 'Başlangıç' : ''}} {{$index == vm.locations.length - 1 ? 'Bitiş' : ''}}</div>
-      <div class="col">{{data}}</div>
-    </div> -->
+    <h4>Güzargah</h4>
+    <div class="row">
+      <div class="col active-poll">Başlangıç</div>
+      <div class="col">{{vm.item.EveningStart}}</div>
+    </div>
+    <div class="row">
+      <div class="col disabled-poll">Bitiş</div>
+      <div class="col">{{vm.item.EveningEnd}}</div>
+    </div>
 
     <h4>Harita</h4>
     <p>

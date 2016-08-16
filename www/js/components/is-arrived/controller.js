@@ -36,7 +36,16 @@
     $http.post('http://ws1.tursan.net/HasDeviceControl.aspx/HasDevice', {
       param: $localStorage.userName
     }).success(function(response) {
-      $scope.vm.items = _.sortBy(JSON.parse(response.d), ['HasDevice']).reverse();
+      console.log('response', JSON.parse(response.d));
+
+      var elements = JSON.parse(response.d);
+
+      elements = elements.map(function(el) {
+        el.ServiceNo = parseInt(el.ServiceNo);
+
+        return el;
+      })
+      $scope.vm.items = _.sortBy(elements, ['HasDevice', 'Plate']).reverse();
 
       $ionicLoading.hide();
     });
@@ -49,7 +58,7 @@
       $http.post('http://ws1.tursan.net/HasDeviceControl.aspx/HasDevice', {
         param: $localStorage.userName
       }).success(function(response) {
-        $scope.vm.items = _.sortBy(JSON.parse(response.d), ['HasDevice']).reverse();
+        $scope.vm.items = _.sortBy(JSON.parse(response.d), ['HasDevice', 'Plate']).reverse();
 
         $ionicLoading.hide();
       });
