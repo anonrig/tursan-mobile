@@ -40,9 +40,12 @@
     $http
       .get('http://ws1.tursan.net/GetEndListHandler.ashx?firmID=' + $localStorage.userName)
       .success(function(response) {
-        console.log('response', response);
+        response = response.map(function(item) {
+          item.number = item.PlateList.length;
+          return item;
+        });
 
-        $scope.vm.items = _.sortBy(response, ['Route', 'ServiceCount']);
+        $scope.vm.items = _.sortBy(response, ['Route', 'number']);
 
         $ionicLoading.hide();
       });

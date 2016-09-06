@@ -12,7 +12,7 @@
           </div>
           <div class="item item-text-wrap">
             <i class="icon ion-home" style="margin-right: 8px; color: #e77915;"></i>{{studentInfo.SchoolPhone}}<br>
-            <i class="icon ion-ios-email" style="margin-right: 8px; color: #e77915;"></i>{{studentInfo.SchoolMail}}
+            <i class="icon ion-ios-email" style="margin-right: 8px; color: #e77915; margin-top: 5px;"></i>{{studentInfo.SchoolMail}}
           </div>
         </div>
 
@@ -52,7 +52,7 @@
         <a class="item item-thumbnail-left" href="#">
           <img ng-if="studentInfo.DriverImage && studentInfo.DriverImage.length > 0" ng-src="{{studentInfo.DriverImage}}" style="border-radius: 50%;">
           <h2>{{studentInfo.DriverName}}</h2>
-          <p><i class="icon ion-ios-telephone" style="margin-right: 8px; color: #e77915;"></i><span ng-click="callNumber('0' + studentInfo.DriverPhone)">0{{studentInfo.DriverPhone}}</span></p>
+          <p style="margin-top: 5px;"><i class="icon ion-ios-telephone" style="margin-right: 8px; color: #e77915;"></i><span style="font-size: 17px;" ng-click="callNumber(getPhone(studentInfo.DriverPhone))">{{getPhone(studentInfo.DriverPhone)}}</span></p>
         </a>
 
         <div class="card" style="margin-bottom: 0;">
@@ -63,7 +63,7 @@
         <a class="item item-thumbnail-right" href="#" style="margin-bottom: 10px;">
           <img ng-if="studentInfo.GuideImage && studentInfo.GuideImage.length > 0" ng-src="{{studentInfo.GuideImage}}" style="border-radius: 50%;">
           <h2>{{studentInfo.GuideName}}</h2>
-          <p><i class="icon ion-ios-telephone" style="margin-right: 8px; color: #e77915;"></i><span ng-click="callNumber('0' + studentInfo.GuidePhone)">0{{studentInfo.GuidePhone}}</span></p>
+          <p style="margin-top: 5px;"><i class="icon ion-ios-telephone" style="margin-right: 8px; color: #e77915;"></i><span ng-click="callNumber(getPhone(studentInfo.GuidePhone))" style="font-size: 17px;">{{getPhone(studentInfo.GuidePhone)}}</span></p>
         </a>
 
         <div class="card" style="margin-bottom: 0;">
@@ -73,7 +73,7 @@
         </div>
         <a class="item" href="#" style="margin-bottom: 10px;">
           <h2 style="display: inline-block;">{{studentInfo.Manager}}</h2>
-          <span style="position: relative; top: -5px;" ng-click="callNumber('0' + studentInfo.ManagerPhone)"><i class="icon ion-ios-telephone" style="margin-left: 8px; margin-right: 8px; color: #e77915;"></i>{{studentInfo.ManagerPhone}}</p>
+          <span style="position: relative; top: -5px;font-size: 17px;" ng-click="callNumber(getPhone(studentInfo.ManagerPhone))"><i class="icon ion-ios-telephone" style="margin-left: 8px; margin-right: 8px; color: #e77915;"></i>{{getPhone(studentInfo.ManagerPhone)}}</p>
         </a>
 
         <div class="card" style="margin-bottom: 0;" ng-if="studentInfo.ManagerHelper.length > 0">
@@ -86,10 +86,27 @@
           <span ng-click="callNumber('0' + studentInfo.ManagerHelperPhone)"style="position: relative; top: -5px;" ng-if="studentInfo.ManagerHelperPhone && studentInfo.ManagerHelperPhone.length > 0"><i class="icon ion-ios-telephone" style="margin-left: 8px; margin-right: 8px; color: #e77915;"></i>{{studentInfo.ManagerHelperPhone}}</p>
         </a>
 
-        <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options'>
-          <ui-gmap-marker ng-if="vm.marker" coords="vm.marker.coords" idkey="vm.marker.id">
-           </ui-gmap-marker>
-        </ui-gmap-google-map>
+        <div style="width: 100%;
+        height: 400px;
+        position: relative;">
+          <div class="map-loader" ng-show="showLoader" style="height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        color: white;
+        text-align: center;
+        line-height: 400px;
+        font-weight: 800;
+        z-index: 9999999;"><ion-spinner></ion-spinner></div>
+          <ui-gmap-google-map center='map.center' zoom='map.zoom' options='options'>
+            <ui-gmap-marker ng-if="vm.marker" coords="vm.marker.coords" idkey="vm.marker.id">
+             </ui-gmap-marker>
+          </ui-gmap-google-map>
+        </div>
       </div>
     </div>
       <ion-item ng-click="go('tab.location-list')" class="item-icon-left item-icon-right" ng-if="!isStudent" style="background-color: white !important;">

@@ -33,23 +33,6 @@
       template: 'Yükleniyor...'
     });
 
-    $http.post('http://ws1.tursan.net/HasDeviceControl.aspx/HasDevice', {
-      param: $localStorage.userName
-    }).success(function(response) {
-      console.log('response', JSON.parse(response.d));
-
-      var elements = JSON.parse(response.d);
-
-      elements = elements.map(function(el) {
-        el.ServiceNo = parseInt(el.ServiceNo);
-
-        return el;
-      })
-      $scope.vm.items = _.sortBy(elements, ['HasDevice', 'Plate']).reverse();
-
-      $ionicLoading.hide();
-    });
-
     $scope.refresh = function() {
       $ionicLoading.show({
         template: 'Yükleniyor...'
@@ -58,11 +41,17 @@
       $http.post('http://ws1.tursan.net/HasDeviceControl.aspx/HasDevice', {
         param: $localStorage.userName
       }).success(function(response) {
-        $scope.vm.items = _.sortBy(JSON.parse(response.d), ['HasDevice', 'Plate']).reverse();
+        var elements = JSON.parse(response.d);
 
+        var active = _.sortBy(_.filter(elements, ['HasDevice', true]), ['ServiceNo']);
+        var nonActive = _.sortBy(_.filter(elements, ['HasDevice', false]), ['ServiceNo']);
+
+        $scope.vm.items = [].concat(active).concat(nonActive);
         $ionicLoading.hide();
       });
     };
+
+    $scope.refresh();
 
     $scope.go = function(item) {
       $localStorage.tempServiceList = item.Plate;

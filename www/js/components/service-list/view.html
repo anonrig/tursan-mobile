@@ -2,10 +2,12 @@
   <ion-content class="padding">
     <ion-list>
       <ion-item collection-repeat="item in vm.items" ng-click="go(item)" style="background-color: white !important;" class="item-icon-right">
-        <!-- <div style="font-weight: 800; display: inline-block; height: 35px; line-height:32px; text-align: center; border-radius: 3px; width: 35px; border: 2px solid gray; color: gray;">{{item.number}}</div> -->
+        <div style="font-weight: 800; top: 12px;
+    position: relative; display: inline-block; height: 35px; line-height:32px; text-align: center; border-radius: 3px; width: 35px; border: 2px solid gray; color: gray;">{{item.ServiceNo}}</div>
         <h3 style="display: inline-block; width: calc(100% - 30px); font-size: 16px; position: relative; top: 5px; left: 10px;">
           {{item.Plate}}
         </h3>
+        <p style="margin-left: 48px;">{{item.RouteDescription}}</p>
         <i class="icon ion-chevron-right" style="font-size: 20px;"></i>
       </ion-item>
     </ion-list>

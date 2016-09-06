@@ -37,6 +37,15 @@
       draggable: false
     };
 
+    $scope.getPhone = function(number) {
+      var response = (number + '').replace(/\D/g, '');
+
+      if (response[0] != '0')
+       response = '0' + response;
+
+      return response;
+    };
+
     if ($scope.isStudent) {
       $scope.vm.marker = {
         id: Math.floor(Math.random() * (1000 - 0 + 1)) + 0,
@@ -108,7 +117,7 @@
           function(result) {
           },
           function(msg) {
-            alert("KO: " + msg);
+            // alert("KO: " + msg);
           })
         } else {
           // potentially powered by InAppBrowser because that (currently) clobbers window.open

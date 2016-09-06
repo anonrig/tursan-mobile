@@ -33,11 +33,14 @@
         template: 'Yukleniyor...'
       });
 
-      console.log($scope.vm.tckimlik);
-
       $http
         .post("http://ws1.tursan.net/GetStudentServiceH.ashx?TC=" + $scope.vm.tckimlik)
         .success(function(response) {
+          if (response == 'null') {
+            $ionicLoading.hide();
+            
+            return navigator.notification.alert('Girdiğiniz TC numarası sistemimizde bulunmamaktadır.', null, 'Bilgi', 'Tamam')
+          }
           $ionicLoading.hide();
 
           $localStorage.tckimlik = $scope.vm.tckimlik;

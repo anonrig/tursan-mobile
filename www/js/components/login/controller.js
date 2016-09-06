@@ -17,14 +17,15 @@
     '$localStorage',
     '$state',
     '$ionicHistory',
-    '$ionicLoading'
+    '$ionicLoading',
+    '$http'
   ];
 
 
   /**
    * Controller.
    */
-  function LoginController($scope, ApiFactory, $localStorage, $state, $ionicHistory, $ionicLoading) {
+  function LoginController($scope, ApiFactory, $localStorage, $state, $ionicHistory, $ionicLoading, $http) {
     $scope.vm = {};
 
     $scope.studentLogin = function() {
@@ -36,18 +37,15 @@
         template: 'Yukleniyor...'
       });
 
-      ApiFactory
-        .login({
-          userName: $scope.vm.username,
-          password: $scope.vm.password
-        })
-        .then(function(res) {
+      $http
+        .get('http://ws1.tursan.net/UserLogin.ashx?firmID=' + $scope.vm.username + '&password=' + $scope.vm.password)
+        .success(function(response) {
+          if (response == 'null') {
+            $ionicLoading.hide();
+            return navigator.notification.alert('Hatalı Şifre veya Kurum Kodu girdiniz.', null, 'Bilgi', 'Tamam')
+          }
+
           $ionicLoading.hide();
-
-          var exists = res.split(' ')[0][0];
-
-          if (exists == '0')
-            return alert('Login error');
 
           $localStorage.userName = $scope.vm.username;
           $localStorage.password = $scope.vm.password;
@@ -56,11 +54,7 @@
             disableBack: true
           });
           $state.go('tab.menu');
-        })
-        .catch(function(err) {
-          console.error('err', err);
-          $ionicLoading.hide();
-        })
+        });
     };
   };
 })();

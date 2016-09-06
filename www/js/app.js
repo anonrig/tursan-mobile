@@ -34,6 +34,7 @@
           moment.locale('tr');
 
           $rootScope.callNumber = function(number) {
+            // window.location.href = 'tel:' + number;
             window.plugins.CallNumber.callNumber(null, null, number, false);
           };
 

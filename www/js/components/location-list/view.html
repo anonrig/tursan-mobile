@@ -6,7 +6,7 @@
   <ion-content class="padding how-to-go-view">
     <ion-list>
       <ion-item collection-repeat="item in vm.items" ng-click="go(item)"  style="background-color: white !important;">
-        <h3>{{item.Route || 'Bilinmeyen'}}<span class="serviceId">{{item.ServiceCount}}</span></h3>
+        <h3>{{item.Route || 'Bilinmeyen'}}<span class="serviceId">{{item.number}}</span></h3>
       </ion-item>
     </ion-list>
   </ion-content>
